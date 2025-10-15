@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bạn Có Thích Mình Không? 💖</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(#ffb6c1, #ffe6f0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  #container {
+    text-align: center;
+    z-index: 100;
+  }
+  #question {
+    font-size: 36px;
+    color: #e91e63;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px #fff;
+  }
+  .btn {
+    padding: 15px 30px;
+    font-size: 24px;
+    margin: 0 15px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    background-color: #e91e63;
+    transition: transform 0.2s;
+    position: relative;
+  }
+  .btn:hover {
+    transform: scale(1.1);
+  }
+  .heart {
+    position: absolute;
+    font-size: 30px;
+    user-select: none;
+    pointer-events: none;
+    animation: fly linear forwards;
+  }
+  @keyframes fly {
+    0% { transform: translateY(0) rotate(0deg) scale(1); opacity:1; }
+    100% { transform: translateY(-500px) rotate(720deg) scale(2); opacity:0; }
+  }
+</style>
+</head>
+<body>
+
+<div id="container">
+  <div id="question">Bạn có thích mình không? 💖</div>
+  <button class="btn" id="yesBtn">Yes</button>
+  <button class="btn" id="noBtn">No</button>
+</div>
+
+<!-- Nhạc nền -->
+<audio id="loveMusic" src="music/love-love-song-music-277935.mp3" autoplay loop></audio>
+
+<script>
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const loveMusic = document.getElementById('loveMusic');
+
+// Tạo trái tim bay
+function createHeart(x, y, size=30) {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerText = '💖';
+  heart.style.left = x + 'px';
+  heart.style.top = y + 'px';
+  heart.style.fontSize = size + 'px';
+  heart.style.animationDuration = (1 + Math.random() * 1.5) + 's';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 2500);
+}
+
+// Nút Yes: chuyển sang trang mới
+yesBtn.onclick = () => {
+  window.location.href = "love.html"; // Chuyển trang
+}
+
+// Nút No: chạy tránh chuột
+noBtn.addEventListener('mousemove', () => {
+  const containerRect = document.body.getBoundingClientRect();
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
+  const x = Math.random() * (containerRect.width - btnWidth);
+  const y = Math.random() * (containerRect.height - btnHeight);
+  noBtn.style.position = 'absolute';
+  noBtn.style.left = x + 'px';
+  noBtn.style.top = y + 'px';
+});
+
+// Trái tim rơi nền liên tục
+setInterval(() => {
+  const x = Math.random() * window.innerWidth;
+  const y = window.innerHeight;
+  const size = 15 + Math.random() * 25;
+  createHeart(x, y, size);
+}, 600);
+</script>
+
+</body>
+</html>

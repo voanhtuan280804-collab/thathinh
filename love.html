@@ -5,153 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mình Yêu Bạn 💖</title>
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(#ffe6f0, #ffb6c1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-    animation: bgPulse 2s infinite alternate;
-  }
-
-  @keyframes bgPulse {
-    0% { background: #ffe6f0; }
-    100% { background: #ffb6c1; }
-  }
-
-  #message {
-    font-size: 60px;
-    color: #ff0066;
-    text-shadow: 3px 3px 8px #fff;
-    margin-bottom: 20px;
-    z-index: 200;
-    animation: blinkScale 1s infinite alternate;
-  }
-
-  @keyframes blinkScale {
-    0% { transform: scale(1); opacity:1; }
-    50% { transform: scale(1.2); opacity:0.7; }
-    100% { transform: scale(1); opacity:1; }
-  }
-
-  #content {
-    font-size: 24px;
-    color: #e91e63;
-    max-width: 600px;
-    z-index: 200;
-    text-shadow: 1px 1px 3px #fff;
-    opacity: 0;
-    transition: opacity 1s ease-in;
-  }
-
-  .heart {
-    position: absolute;
-    font-size: 30px;
-    user-select: none;
-    pointer-events: none;
-    animation: fly linear forwards;
-  }
-
-  @keyframes fly {
-    0% { transform: translateY(0) rotate(0deg) scale(1); opacity:1; }
-    100% { transform: translateY(-600px) rotate(720deg) scale(2); opacity:0; }
-  }
-
-  .bigHeart {
-    font-size: 150px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    z-index: 300;
-    color: #ff3366;
-    text-shadow: 0 0 20px #ff6699, 0 0 40px #ff99cc;
-  }
-
-  @keyframes heartBoom {
-    0% { transform: translate(-50%, -50%) scale(0); opacity:0; }
-    50% { transform: translate(-50%, -50%) scale(2); opacity:1; }
-    100% { transform: translate(-50%, -50%) scale(1); opacity:1; }
-  }
-
-  .spark {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    background: #fff;
-    border-radius: 50%;
-    opacity: 0.8;
-    pointer-events: none;
-  }
-  /* Media query cho màn hình nhỏ (điện thoại, <600px) */
-@media (max-width: 600px) {
-  #question {
-    font-size: 10vw; /* font co theo chiều rộng màn hình */
-    margin-bottom: 3vh;
-  }
-
-  .btn {
-    font-size: 5vw;
-    padding: 2vh 4vw;
-    margin: 2vh 2vw;
-  }
-
-  #content {
-    font-size: 4vw;
-    max-width: 90vw;
-    margin-top: 2vh;
-  }
-
-  .bigHeart {
-    font-size: 20vw;
-  }
-
-  .heart {
-    font-size: 4vw;
-  }
-
-  .spark {
-    width: 0.5vw;
-    height: 0.5vw;
-  }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  height:100vh;
+  background:linear-gradient(#ffe6f0,#ffb6c1);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Segoe UI',sans-serif;
+  overflow:hidden;
+  text-align:center;
+}
+#message{font-size:10vw;color:#ff0066;text-shadow:3px 3px 8px #fff;margin-bottom:2vh;}
+#content{font-size:4vw;max-width:90vw;opacity:0;text-shadow:1px 1px 3px #fff;transition:opacity 1s;}
+.heart{position:absolute;font-size:3vw;pointer-events:none;animation:fly linear forwards;}
+.bigHeart{font-size:16vw;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);opacity:0;color:#ff3366;text-shadow:0 0 20px #ff6699,0 0 40px #ff99cc;}
+@keyframes fly{0%{transform:translateY(0) rotate(0deg) scale(1);opacity:1}100%{transform:translateY(-50vh) rotate(720deg) scale(2);opacity:0}}
+@keyframes heartBoom{0%{transform:translate(-50%,-50%) scale(0);opacity:0}50%{transform:translate(-50%,-50%) scale(2);opacity:1}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}
+/* Điện thoại nhỏ */
+@media screen and (max-width: 360px) {
+  #question { font-size: 6vw; }
+  .btn { font-size: 3vw; padding: 1.5vh 3vw; }
+  #message { font-size: 8vw; }
+  #content { font-size: 3.5vw; }
 }
 
-/* Media query cho màn hình trung bình (máy tính bảng, 601px – 1024px) */
-@media (min-width: 601px) and (max-width: 1024px) {
-  #question {
-    font-size: 6vw;
-    margin-bottom: 2vh;
-  }
+/* Điện thoại lớn */
+@media screen and (max-width: 480px) {
+  #question { font-size: 7vw; }
+  .btn { font-size: 3.5vw; padding: 2vh 4vw; }
+  #message { font-size: 9vw; }
+  #content { font-size: 4vw; }
+}
 
-  .btn {
-    font-size: 4vw;
-    padding: 1.5vh 3vw;
-    margin: 1vh 2vw;
-  }
+/* Tablet nhỏ */
+@media screen and (max-width: 600px) {
+  #question { font-size: 8vw; }
+  .btn { font-size: 4vw; padding: 2vh 4vw; }
+  #message { font-size: 10vw; }
+  #content { font-size: 4.5vw; }
+}
 
-  #content {
-    font-size: 3vw;
-    max-width: 80vw;
-  }
+/* Tablet lớn */
+@media screen and (max-width: 768px) {
+  #question { font-size: 9vw; }
+  .btn { font-size: 4.5vw; padding: 2.5vh 5vw; }
+  #message { font-size: 11vw; }
+  #content { font-size: 5vw; }
+}
 
-  .bigHeart {
-    font-size: 15vw;
-  }
-
-  .heart {
-    font-size: 3vw;
-  }
-
-  .spark {
-    width: 0.4vw;
-    height: 0.4vw;
-  }
+/* Laptop / Desktop */
+@media screen and (min-width: 769px) {
+  #question { font-size: 36px; }
+  .btn { font-size: 24px; padding: 15px 30px; }
+  #message { font-size: 60px; }
+  #content { font-size: 24px; }
 }
 
 </style>
@@ -163,119 +71,83 @@
   <div id="content"></div>
 </div>
 
-<!-- Nhạc nền -->
-<audio id="loveMusic" src="music/love-love-song-music-277935.mp3" autoplay loop></audio>
+<audio id="loveMusic" src="music/love-love-song-music-277935.mp3" loop></audio>
 
 <script>
+const content=document.getElementById('content');
+const loveMusic=document.getElementById('loveMusic');
+
+// Nhạc bật khi người dùng chạm vào trang lần đầu
+let musicStarted=false;
+function startMusicOnce(){
+  if(!musicStarted){
+    loveMusic.play();
+    musicStarted=true;
+  }
+}
+document.addEventListener('touchstart', startMusicOnce, {once:true});
+document.addEventListener('click', startMusicOnce, {once:true});
+
+// Trái tim bay
+function createHeart(x,y,size=3){
+  const heart=document.createElement('div');
+  heart.className='heart';
+  heart.innerText='💖';
+  heart.style.left=x+'px';
+  heart.style.top=y+'px';
+  heart.style.fontSize=size+'vw';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),3000);
+}
+
+// Big heart nở bung
+function bigHeartBoom(){
+  const bigHeart=document.createElement('div');
+  bigHeart.className='bigHeart';
+  bigHeart.innerText='💖';
+  document.body.appendChild(bigHeart);
+  bigHeart.style.animation='heartBoom 1s forwards';
+  setTimeout(()=>bigHeart.remove(),1500);
+}
+
 // Nội dung ý nghĩa
-const texts = [
-  "Từ khi gặp bạn, mỗi ngày của mình đều tràn ngập niềm vui. Bạn làm mọi khoảnh khắc trở nên đáng nhớ và đặc biệt hơn bao giờ hết. Hy vọng chúng ta sẽ luôn cùng nhau đi qua những ngày tháng hạnh phúc phía trước. 💖💖💖",
-  "Bạn là người làm tim mình rung động mỗi ngày. Mọi nụ cười và ánh mắt của bạn đều khiến mình cảm thấy thật may mắn. Hy vọng chúng ta sẽ cùng nhau viết nên câu chuyện tình yêu thật đẹp và dài lâu. 💖💖💖",
-  "Mỗi khoảnh khắc bên bạn đều khiến mình cảm thấy thật quý giá. Cảm ơn bạn đã đến bên đời mình và làm mọi thứ trở nên tuyệt vời hơn. 💖💖💖"
+const texts=[
+  "Từ khi gặp bạn, mỗi ngày của mình đều tràn ngập niềm vui. Hy vọng chúng ta sẽ luôn cùng nhau đi qua những ngày tháng hạnh phúc phía trước. 💖",
+  "Bạn là người làm tim mình rung động mỗi ngày. Mọi nụ cười và ánh mắt đều khiến mình cảm thấy thật may mắn. 💖",
+  "Cảm ơn bạn đã đến bên đời mình và làm mọi thứ trở nên tuyệt vời hơn. 💖"
 ];
 
-// Máy đánh chữ
-function typeWriter(text, i = 0) {
-  const content = document.getElementById("content");
-  if (i < text.length) {
-    content.innerHTML += text.charAt(i);
-    setTimeout(() => typeWriter(text, i + 1), 40);
+function typeWriter(text,i=0){
+  if(i<text.length){
+    content.innerHTML+=text.charAt(i);
+    setTimeout(()=>typeWriter(text,i+1),40);
   }
 }
 
-// Tạo trái tim bay
-function createHeart(x, y, size=30) {
-  const heart = document.createElement('div');
-  heart.className = 'heart';
-  heart.innerText = '💖';
-  heart.style.left = x + 'px';
-  heart.style.top = y + 'px';
-  heart.style.fontSize = size + 'px';
-  heart.style.animationDuration = (1 + Math.random() * 1.5) + 's';
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 3000);
+// Load cinematic
+window.onload=()=>{
+  bigHeartBoom();
+  setTimeout(bigHeartBoom,1000);
+  const text=texts[Math.floor(Math.random()*texts.length)];
+  setTimeout(()=>{
+    typeWriter(text);
+    content.style.opacity=1;
+  },2000);
 }
 
-// Trái tim bay theo chuột
-document.addEventListener('mousemove', e => {
-  createHeart(e.clientX, e.clientY, 15 + Math.random()*15);
+// Trái tim theo touch/mouse
+document.addEventListener('mousemove',e=>createHeart(e.clientX,e.clientY,2+Math.random()*3));
+document.addEventListener('touchmove',e=>{
+  const t=e.touches[0];
+  if(t) createHeart(t.clientX,t.clientY,2+Math.random()*3);
 });
 
-// Trái tim rơi nền liên tục
-setInterval(() => {
-  const x = Math.random() * window.innerWidth;
-  const y = window.innerHeight;
-  createHeart(x, y, 20 + Math.random()*30);
-}, 500);
-
-// Trái tim nở bung + pháo hoa trái tim + mưa ánh sáng
-function bigHeartBoom() {
-  const bigHeart = document.createElement('div');
-  bigHeart.className = 'bigHeart';
-  bigHeart.innerText = '💖';
-  document.body.appendChild(bigHeart);
-  bigHeart.style.animation = "heartBoom 1s forwards";
-
-  const loveMusic = document.getElementById("loveMusic");
-  const originalVolume = loveMusic.volume;
-  loveMusic.volume = 1.0;
-  setTimeout(() => loveMusic.volume = originalVolume, 1000);
-
-  // Pháo hoa trái tim
-  setTimeout(() => {
-    for(let i=0; i<30; i++){
-      const x = window.innerWidth/2;
-      const y = window.innerHeight/2;
-      const size = 20 + Math.random()*20;
-      const angle = Math.random() * 2 * Math.PI;
-      const distance = 100 + Math.random()*200;
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.innerText = '💖';
-      heart.style.left = x + 'px';
-      heart.style.top = y + 'px';
-      heart.style.fontSize = size + 'px';
-      document.body.appendChild(heart);
-      const targetX = x + distance * Math.cos(angle);
-      const targetY = y + distance * Math.sin(angle);
-      heart.animate([
-        { transform: `translate(0px,0px) rotate(0deg)`, opacity:1 },
-        { transform: `translate(${targetX-x}px, ${targetY-y}px) rotate(360deg)`, opacity:0 }
-      ], { duration: 1500, easing: 'ease-out' });
-      setTimeout(() => heart.remove(), 1500);
-    }
-  }, 800);
-
-  // Mưa ánh sáng lấp lánh
-  setInterval(() => {
-    const spark = document.createElement('div');
-    spark.className = 'spark';
-    spark.style.left = Math.random() * window.innerWidth + 'px';
-    spark.style.top = '-10px';
-    const size = 2 + Math.random() * 4;
-    spark.style.width = size + 'px';
-    spark.style.height = size + 'px';
-    document.body.appendChild(spark);
-    const duration = 3000 + Math.random() * 2000;
-    spark.animate([
-      { transform: `translateY(0px)`, opacity: 1 },
-      { transform: `translateY(${window.innerHeight}px)`, opacity: 0 }
-    ], { duration: duration, easing: 'linear' });
-    setTimeout(() => spark.remove(), duration);
-  }, 100);
-
-  setTimeout(() => bigHeart.remove(), 1500);
-}
-
-// Load cinematic và nội dung
-window.onload = () => {
-  const text = texts[Math.floor(Math.random() * texts.length)];
-  bigHeartBoom();
-  setTimeout(bigHeartBoom, 1000);
-  setTimeout(() => typeWriter(text), 2000);
-  setTimeout(() => document.getElementById("content").style.opacity = 1, 2000);
-}
+// Trái tim rơi nền
+setInterval(()=>{
+  const x=Math.random()*window.innerWidth;
+  const y=window.innerHeight;
+  createHeart(x,y,2+Math.random()*3);
+},500);
 </script>
-
 </body>
 </html>

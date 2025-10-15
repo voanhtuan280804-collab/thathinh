@@ -5,116 +5,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bạn Có Thích Mình Không? 💖</title>
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(#ffb6c1, #ffe6f0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-    overflow: hidden;
-    position: relative;
-  }
-  #container {
-    text-align: center;
-    z-index: 100;
-  }
-  #question {
-    font-size: 36px;
-    color: #e91e63;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 2px #fff;
-  }
-  .btn {
-    padding: 15px 30px;
-    font-size: 24px;
-    margin: 0 15px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    color: white;
-    background-color: #e91e63;
-    transition: transform 0.2s;
-    position: relative;
-  }
-  .btn:hover {
-    transform: scale(1.1);
-  }
-  .heart {
-    position: absolute;
-    font-size: 30px;
-    user-select: none;
-    pointer-events: none;
-    animation: fly linear forwards;
-  }
-  @keyframes fly {
-    0% { transform: translateY(0) rotate(0deg) scale(1); opacity:1; }
-    100% { transform: translateY(-500px) rotate(720deg) scale(2); opacity:0; }
-  }
-  /* Media query cho màn hình nhỏ (điện thoại, <600px) */
-@media (max-width: 600px) {
-  #question {
-    font-size: 8vw; /* giảm từ 10vw xuống 8vw */
-    margin-bottom: 3vh;
-  }
-
-  .btn {
-    font-size: 4vw; /* giảm từ 5vw xuống 4vw */
-    padding: 2vh 4vw;
-    margin: 2vh 2vw;
-  }
-
-  #content {
-    font-size: 3.5vw; /* giảm từ 4vw xuống 3.5vw */
-    max-width: 90vw;
-    margin-top: 2vh;
-  }
-
-  .bigHeart {
-    font-size: 16vw; /* giảm từ 20vw xuống 16vw */
-  }
-
-  .heart {
-    font-size: 3vw; /* giảm từ 4vw xuống 3vw */
-  }
-
-  .spark {
-    width: 0.4vw; /* giảm từ 0.5vw */
-    height: 0.4vw;
-  }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  height:100vh;
+  background:linear-gradient(#ffb6c1,#ffe6f0);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Segoe UI',sans-serif;
+  overflow:hidden;
+  text-align:center;
+}
+#container{z-index:100;}
+#question{font-size:8vw;color:#e91e63;margin-bottom:2vh;text-shadow:1px 1px 2px #fff;}
+.btn{
+  padding:2vh 4vw;
+  font-size:4vw;
+  margin:2vh 2vw;
+  border:none;
+  border-radius:12px;
+  color:white;
+  background:#e91e63;
+  cursor:pointer;
+  transition:transform 0.2s;
+  position:relative;
+}
+.btn:hover{transform:scale(1.1);}
+.heart{position:absolute;font-size:3vw;user-select:none;pointer-events:none;animation:fly linear forwards;}
+@keyframes fly{0%{transform:translateY(0) rotate(0deg) scale(1);opacity:1}100%{transform:translateY(-50vh) rotate(720deg) scale(2);opacity:0;}}
+/* Điện thoại nhỏ */
+@media screen and (max-width: 360px) {
+  #question { font-size: 6vw; }
+  .btn { font-size: 3vw; padding: 1.5vh 3vw; }
+  #message { font-size: 8vw; }
+  #content { font-size: 3.5vw; }
 }
 
-/* Media query cho màn hình trung bình (máy tính bảng, 601px – 1024px) */
-@media (min-width: 601px) and (max-width: 1024px) {
-  #question {
-    font-size: 5vw; /* giảm từ 6vw xuống 5vw */
-    margin-bottom: 2vh;
-  }
+/* Điện thoại lớn */
+@media screen and (max-width: 480px) {
+  #question { font-size: 7vw; }
+  .btn { font-size: 3.5vw; padding: 2vh 4vw; }
+  #message { font-size: 9vw; }
+  #content { font-size: 4vw; }
+}
 
-  .btn {
-    font-size: 3.5vw; /* giảm từ 4vw xuống 3.5vw */
-    padding: 1.5vh 3vw;
-    margin: 1vh 2vw;
-  }
+/* Tablet nhỏ */
+@media screen and (max-width: 600px) {
+  #question { font-size: 8vw; }
+  .btn { font-size: 4vw; padding: 2vh 4vw; }
+  #message { font-size: 10vw; }
+  #content { font-size: 4.5vw; }
+}
 
-  #content {
-    font-size: 2.8vw; /* giảm từ 3vw xuống 2.8vw */
-    max-width: 80vw;
-  }
+/* Tablet lớn */
+@media screen and (max-width: 768px) {
+  #question { font-size: 9vw; }
+  .btn { font-size: 4.5vw; padding: 2.5vh 5vw; }
+  #message { font-size: 11vw; }
+  #content { font-size: 5vw; }
+}
 
-  .bigHeart {
-    font-size: 12vw; /* giảm từ 15vw xuống 12vw */
-  }
-
-  .heart {
-    font-size: 2.5vw; /* giảm từ 3vw xuống 2.5vw */
-  }
-
-  .spark {
-    width: 0.3vw; /* giảm từ 0.4vw */
-    height: 0.3vw;
-  }
+/* Laptop / Desktop */
+@media screen and (min-width: 769px) {
+  #question { font-size: 36px; }
+  .btn { font-size: 24px; padding: 15px 30px; }
+  #message { font-size: 60px; }
+  #content { font-size: 24px; }
 }
 
 </style>
@@ -127,52 +83,50 @@
   <button class="btn" id="noBtn">No</button>
 </div>
 
-<!-- Nhạc nền -->
-<audio id="loveMusic" src="music/love-love-song-music-277935.mp3" autoplay loop></audio>
+<audio id="loveMusic" src="music/love-love-song-music-277935.mp3" loop></audio>
 
 <script>
 const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
 const loveMusic = document.getElementById('loveMusic');
 
-// Tạo trái tim bay
-function createHeart(x, y, size=30) {
-  const heart = document.createElement('div');
-  heart.className = 'heart';
-  heart.innerText = '💖';
-  heart.style.left = x + 'px';
-  heart.style.top = y + 'px';
-  heart.style.fontSize = size + 'px';
-  heart.style.animationDuration = (1 + Math.random() * 1.5) + 's';
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 2500);
+// Nhạc bật khi người dùng chạm vào trang lần đầu
+let musicStarted = false;
+function startMusicOnce(){
+  if(!musicStarted){
+    loveMusic.play();
+    musicStarted=true;
+  }
 }
+document.addEventListener('touchstart', startMusicOnce, {once:true});
+document.addEventListener('click', startMusicOnce, {once:true});
 
-// Nút Yes: chuyển sang trang mới
-yesBtn.onclick = () => {
-  window.location.href = "love.html"; // Chuyển trang
+// Yes: chuyển trang
+yesBtn.onclick = ()=>window.location.href='love.html';
+
+// No: chạy tránh chuột/touch
+function moveNoBtn(){
+  const x=Math.random()*(window.innerWidth-noBtn.offsetWidth);
+  const y=Math.random()*(window.innerHeight-noBtn.offsetHeight);
+  noBtn.style.position='absolute';
+  noBtn.style.left=x+'px';
+  noBtn.style.top=y+'px';
 }
-
-// Nút No: chạy tránh chuột
-noBtn.addEventListener('mousemove', () => {
-  const containerRect = document.body.getBoundingClientRect();
-  const btnWidth = noBtn.offsetWidth;
-  const btnHeight = noBtn.offsetHeight;
-  const x = Math.random() * (containerRect.width - btnWidth);
-  const y = Math.random() * (containerRect.height - btnHeight);
-  noBtn.style.position = 'absolute';
-  noBtn.style.left = x + 'px';
-  noBtn.style.top = y + 'px';
-});
+noBtn.addEventListener('mousemove', moveNoBtn);
+noBtn.addEventListener('touchstart', moveNoBtn);
 
 // Trái tim rơi nền liên tục
-setInterval(() => {
-  const x = Math.random() * window.innerWidth;
-  const y = window.innerHeight;
-  const size = 15 + Math.random() * 25;
-  createHeart(x, y, size);
-}, 600);
+setInterval(()=>{
+  const x=Math.random()*window.innerWidth;
+  const y=window.innerHeight;
+  const heart=document.createElement('div');
+  heart.className='heart';
+  heart.innerText='💖';
+  heart.style.left=x+'px';
+  heart.style.top=y+'px';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),3000);
+},500);
 </script>
-
 </body>
 </html>

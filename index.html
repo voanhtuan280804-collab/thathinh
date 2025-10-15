@@ -52,6 +52,71 @@
     0% { transform: translateY(0) rotate(0deg) scale(1); opacity:1; }
     100% { transform: translateY(-500px) rotate(720deg) scale(2); opacity:0; }
   }
+  /* Media query cho màn hình nhỏ (điện thoại, <600px) */
+@media (max-width: 600px) {
+  #question {
+    font-size: 8vw; /* giảm từ 10vw xuống 8vw */
+    margin-bottom: 3vh;
+  }
+
+  .btn {
+    font-size: 4vw; /* giảm từ 5vw xuống 4vw */
+    padding: 2vh 4vw;
+    margin: 2vh 2vw;
+  }
+
+  #content {
+    font-size: 3.5vw; /* giảm từ 4vw xuống 3.5vw */
+    max-width: 90vw;
+    margin-top: 2vh;
+  }
+
+  .bigHeart {
+    font-size: 16vw; /* giảm từ 20vw xuống 16vw */
+  }
+
+  .heart {
+    font-size: 3vw; /* giảm từ 4vw xuống 3vw */
+  }
+
+  .spark {
+    width: 0.4vw; /* giảm từ 0.5vw */
+    height: 0.4vw;
+  }
+}
+
+/* Media query cho màn hình trung bình (máy tính bảng, 601px – 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  #question {
+    font-size: 5vw; /* giảm từ 6vw xuống 5vw */
+    margin-bottom: 2vh;
+  }
+
+  .btn {
+    font-size: 3.5vw; /* giảm từ 4vw xuống 3.5vw */
+    padding: 1.5vh 3vw;
+    margin: 1vh 2vw;
+  }
+
+  #content {
+    font-size: 2.8vw; /* giảm từ 3vw xuống 2.8vw */
+    max-width: 80vw;
+  }
+
+  .bigHeart {
+    font-size: 12vw; /* giảm từ 15vw xuống 12vw */
+  }
+
+  .heart {
+    font-size: 2.5vw; /* giảm từ 3vw xuống 2.5vw */
+  }
+
+  .spark {
+    width: 0.3vw; /* giảm từ 0.4vw */
+    height: 0.3vw;
+  }
+}
+
 </style>
 </head>
 <body>

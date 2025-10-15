@@ -89,6 +89,71 @@
     opacity: 0.8;
     pointer-events: none;
   }
+  /* Media query cho màn hình nhỏ (điện thoại, <600px) */
+@media (max-width: 600px) {
+  #question {
+    font-size: 10vw; /* font co theo chiều rộng màn hình */
+    margin-bottom: 3vh;
+  }
+
+  .btn {
+    font-size: 5vw;
+    padding: 2vh 4vw;
+    margin: 2vh 2vw;
+  }
+
+  #content {
+    font-size: 4vw;
+    max-width: 90vw;
+    margin-top: 2vh;
+  }
+
+  .bigHeart {
+    font-size: 20vw;
+  }
+
+  .heart {
+    font-size: 4vw;
+  }
+
+  .spark {
+    width: 0.5vw;
+    height: 0.5vw;
+  }
+}
+
+/* Media query cho màn hình trung bình (máy tính bảng, 601px – 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  #question {
+    font-size: 6vw;
+    margin-bottom: 2vh;
+  }
+
+  .btn {
+    font-size: 4vw;
+    padding: 1.5vh 3vw;
+    margin: 1vh 2vw;
+  }
+
+  #content {
+    font-size: 3vw;
+    max-width: 80vw;
+  }
+
+  .bigHeart {
+    font-size: 15vw;
+  }
+
+  .heart {
+    font-size: 3vw;
+  }
+
+  .spark {
+    width: 0.4vw;
+    height: 0.4vw;
+  }
+}
+
 </style>
 </head>
 <body>
